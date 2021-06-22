@@ -216,3 +216,29 @@ Amplify.DataStore.query(Todo.self,
 }
 ```
 ### Connect to cloud
+
+#### Provision backend
+DataStore is now persisting locally, next step is to connect to cloud. We will create an AWS AppSync API and configure DataStore to synchronize data to it.
+1. Configure Amplify to manage cloud resources - run `amplify configure` - this creates a new IAM User
+2. Initialize the Amplify backend - `amplify init`
+3. Push your new backend to the cloud - ` amplify push`
+4. Answer no to "Do you want to generate code for your newly created GraphQL API?"
+
+#### Enable cloud syncing
+In order to enable cloud syncing you need to configure your application to use the Amplify API category.
+Replace configure function in TodoApp.swift to:
+```
+func configureAmplify() {
+   let models = AmplifyModels()
+   let apiPlugin = AWSAPIPlugin(modelRegistration: models)
+   let dataStorePlugin = AWSDataStorePlugin(modelRegistration: models)
+   do {
+       try Amplify.add(plugin: apiPlugin)
+       try Amplify.add(plugin: dataStorePlugin)
+       try Amplify.configure()
+       print("Initialized Amplify");
+   } catch {
+       assert(false, "Could not initialize Amplify: \(error)")
+   }
+}
+```
