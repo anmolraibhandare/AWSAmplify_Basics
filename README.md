@@ -1,4 +1,13 @@
 # AWSAmplify_Application
+The open-source Amplify Framework provides the following products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
+
+- `Amplify CLI` - Configure all the services needed to power your backend through a simple command line interface
+- `Amplify Libraries` - Use case-centric client libraries to integrate your app code with a backend using declarative interfaces
+- `Amplify UI Components` - UI libraries for React, React Native, Angular, Ionic and Vue
+
+In the following tutorial, we’ll define a GraphQL schema that we can use to provision backend resources, store data locally, sync to a cloud database, as well as receive updates over a realtime subscription.
+
+`GraphQL` is a data language that was developed to enable apps to fetch data from APIs. It has a declarative, self-documenting style. In a GraphQL operation, the client specifies how to structure the data when it is returned by the server. This makes it possible for the client to query only for the data it needs, in the format that it needs it in.
 
 ## Getting Started
 ### Setup fullstack project
@@ -140,12 +149,15 @@ You can also use Predicates to find certain records:
 
 The following predicates are supported:
 Strings
-eq ne le lt ge gt contains notContains beginsWith between
+`eq ne le lt ge gt contains notContains beginsWith between`
 Numbers
-eq ne le lt ge gt between
+`eq ne le lt ge gt between`
 Lists
-contains notContains
+`contains notContains`
 
+For example: here we are returning queries which have a high priority
+Amplify.DataStore.query(Todo.self,
+                       where: Todo.keys.priority.eq(Priority.high)) { result in
 ```
 Amplify.DataStore.query(Todo.self,
                        where: Todo.keys.priority.eq(Priority.high)) { result in
@@ -168,6 +180,7 @@ Amplify.DataStore.query(Todo.self,
 ```
 
 #### Update
+
 ```
  Amplify.DataStore.query(Todo.self,
                          where: Todo.keys.name.eq("Finish quarterly taxes")) { result in
