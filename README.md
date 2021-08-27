@@ -1,4 +1,5 @@
-# AWSAmplify_Application
+# AWSAmplify_Basics
+
 The open-source Amplify Framework provides the following products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
 
 - `Amplify CLI` - Configure all the services needed to power your backend through a simple command line interface
